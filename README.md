@@ -15,14 +15,15 @@
 
 演示地址：http://simple-trade.cn:18188/  账户：guest/1
 
-## 架构
 
-### 概览图
+## 概览图
 
 本项目基本实现了缠论模型计算、可视化、选股、策略模板等功能，部分功能仍在开发中。
 
 ![量化架构-逻辑架构](https://user-images.githubusercontent.com/104715342/166646137-5af0371d-3e2a-4776-86db-10450d251879.png)
 
+## 安装
+pip install simple-czsc==0.1.0
 
 ## 策略及选股参考Demo
 https://github.com/simple-trade/simple-czsc-demo
