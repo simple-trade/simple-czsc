@@ -94,6 +94,9 @@ PS：建议使用Anaconda管理开发环境，[清华镜像站下载](https://mi
 
 
 
+## 交流
+![WechatIMG9](https://user-images.githubusercontent.com/104715342/166646837-8c63702f-518a-463e-99af-c5c2c832cd5c.jpeg)
+
 
 
 
