@@ -1,6 +1,6 @@
 # Simple缠论量化工具集
 
-## 一、简介
+## 简介
 
 ​	缠论只是一个工具，请不要将它神化，发现一些客观的规律远比追求虚无缥缈的神论更有意义。
 
@@ -15,84 +15,17 @@
 
 演示地址：http://simple-trade.cn:18188/  账户：guest/1
 
-## 二、架构
+## 架构
 
-### 2.1 概览图
+### 概览图
 
 本项目基本实现了缠论模型计算、可视化、选股、策略模板等功能，部分功能仍在开发中。
 
 ![量化架构-逻辑架构](https://user-images.githubusercontent.com/104715342/166646137-5af0371d-3e2a-4776-86db-10450d251879.png)
 
-## 三、工程结构
 
-```
-├── bin # 命令脚本
-├── czsc_demo
-│   ├── conf 配置项
-│   ├── draw 绘图
-│   ├── pusher # 消息推送
-│   ├── strategy 
-│   │   └── myquant # 掘金策略
-│   │       ├── code # 策略
-│   │       └── selector # 指标选股
-│   └── tests # 测试类
-├── gmcache # 掘金缓存
-└── output # 输出目录
-    └── html
-```
-
-## 四、开发环境搭建
-
-参考概览图，本项目实现了行情数据推进和策略回测的其他部分，为简单起见使用掘金量化平台的行情数据推进和策略回测进行demo演示。缠论模型自身不依赖任何三方平台，开发策略过程中可以对接任意量化平台或自行实现。
-
-### 4.1 主要技术栈
-
-python 3.7、pandas、pyecharts、selenium
-
-PS：建议使用Anaconda管理开发环境，[清华镜像站下载](https://mirrors.tuna.tsinghua.edu.cn/)。
-
-### 4.2 掘金客户端与策略分离部署
-
-**Windows用户可直接下载本项目使用掘金客户端或者任何Python IDE运行，本节可忽略。**具体使用方法可参考掘金量化平台官方文档。
-
-因掘金客户端目前只有Windows版，而本人日常使用MacOS，所以采用了掘金客户端与策略分离部署方式搭建的开发环境，这也是掘金量化平台亮点---SDK支持外部调用。
-
-#### 4.2.1 分离部署网络架构
-
-​	如`分离部署网络架构图`所示，掘金客户端部署在Windows，策略运行在/Win/Linux/MacOS。从网络层面看，策略运行环境需要访问掘金客户端所在环境的两个端口，以支持掘金平台策略管理和回测。因此需要开放网络策略，方向：工程（策略）运行环境 -> 掘金客户端，端口：rpcPort和subPort。
-
-<center>    <img style="border-radius: 0.3125em;    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);"     src="https://user-images.githubusercontent.com/104715342/166646145-783dfdc7-b0a4-4085-81df-25d3f81af571.png">    <br>    <div style="color:orange; border-bottom: 1px solid #d9d9d9;    display: inline-block;    color: #999;    padding: 2px;">分离部署网络架构图</div> </center>
-
-#### 4.2.2 掘金客户端配置
-
-​	如`掘金客户端配置文件图`所示，安装掘金客户端后配置文件中已默认指定rpcPort和subPort，可在系统用户目录下的.goldminer3/\.gmserv.json修改。（如：C:\Users\Administrator\\.goldminer3\\.gmserv.json）
-
-<center>    <img style="border-radius: 0.3125em;    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);"     src="https://user-images.githubusercontent.com/104715342/166646150-4d748f9e-1a86-4f4a-bcc5-ba7efe555f8d.png">    <br>    <div style="color:orange; border-bottom: 1px solid #d9d9d9;    display: inline-block;    color: #999;    padding: 2px;">掘金客户端配置文件图</div> </center>
-
-#### 4.2.3 创建空白策略
-
-​	打开掘金客户端创建一个空白策略，记录好策略ID。
-
-#### 4.2.4 工程配置	
-
-​	如`工程配置掘金策略ID和客户端地址图`所示，修改工程目录conf/conf.yaml文件，token设置为掘金客户端密钥---在客户端系统管理中查看，serv_addr设置为掘金客户端IP：rpcPort，strategy_id设置为上一步的策略ID。
-
-<center>    <img style="border-radius: 0.3125em;    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);"     src="https://user-images.githubusercontent.com/104715342/166646130-296fef95-a0c2-4765-b99d-6e6859326823.png">    <br>    <div style="color:orange; border-bottom: 1px solid #d9d9d9;    display: inline-block;    color: #999;    padding: 2px;">工程配置掘金策略ID和客户端地址图</div> </center>
-
-### 4.3 运行DEMO策略
-
-可使用三种方式运行策略：
-
-1. bin/test_myquant_strategy_stock_demo.sh 后台运行，后台运行日志存储在bin/simple.log，该方式适用于分离部署时正式执行回测。
-
-2. IDE或命令行运行test_myquant_strategy_stock_demo.py，该方式适用于调试策略。
-3. 使用掘金客户端运行策略。
-
-### 4.4 其他依赖
-
-[使用pyecharts提供的selenium方式渲染图片](https://pyecharts.org/#/zh-cn/render_images?id=make_snapshot)
-
-
+## 策略及选股参考Demo
+https://github.com/simple-trade/simple-czsc-demo
 
 ## 交流
 ![WechatIMG9](https://user-images.githubusercontent.com/104715342/166646837-8c63702f-518a-463e-99af-c5c2c832cd5c.jpeg)
