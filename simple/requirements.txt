@@ -1,0 +1,8 @@
+numpy==1.18.1
+pandas==0.24.2
+pyecharts==1.7.1
+requests==2.23.0
+selenium==3.141.0
+simple==0.1.1
+snapshot_selenium==0.0.2
+TA_Lib==0.4.17
